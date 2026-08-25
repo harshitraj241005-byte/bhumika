@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff1451" />
+  <title>For Bhumika 💖</title>
+  <style>
+    :root{
+      --pink:#ff1451;
+      --pink2:#ff2d67;
+      --ink:#6e2140;
+      --card:rgba(255,250,252,.94);
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,Helvetica,sans-serif}
+    body{background:linear-gradient(135deg,#ff0b49,#ff3470);color:#4f1830}
+    button{font:inherit;border:0;cursor:pointer}
+    .page{position:relative;width:100%;height:100svh;overflow:hidden;isolation:isolate}
+
+    /* shared floating pictures */
+    .float-photo{position:absolute;z-index:1;overflow:hidden;border-radius:28px;
+      box-shadow:0 16px 40px rgba(83,0,29,.24);pointer-events:none}
+    .float-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .drift-a{animation:driftA 7s ease-in-out infinite}
+    .drift-b{animation:driftB 8.5s ease-in-out infinite}
+    .drift-c{animation:driftC 9.5s ease-in-out infinite}
+    .drift-d{animation:driftD 10s ease-in-out infinite}
+    @keyframes driftA{0%,100%{transform:translateY(-28px) rotate(-2deg)}50%{transform:translateY(28px) rotate(2deg)}}
+    @keyframes driftB{0%,100%{transform:translateY(32px) rotate(2deg)}50%{transform:translateY(-34px) rotate(-2deg)}}
+    @keyframes driftC{0%,100%{transform:translate(0,24px) rotate(-1deg)}50%{transform:translate(8px,-28px) rotate(2deg)}}
+    @keyframes driftD{0%,100%{transform:translate(-4px,-20px) rotate(2deg)}50%{transform:translate(8px,28px) rotate(-2deg)}}
+
+    /* proposal */
+    #proposalScreen,#loveScreen{position:absolute;inset:0;transition:opacity .75s ease,transform .75s ease}
+    #proposalScreen{z-index:5;background:radial-gradient(circle at 50% 42%,#ff7698 0,#ff2a63 42%,#d90a42 100%)}
+    .proposal-bg{position:absolute;inset:0;opacity:.95}
+    .proposal-bg .p1{left:-14vw;top:10vh;width:42vw;height:27vh}
+    .proposal-bg .p2{right:-13vw;top:8vh;width:43vw;height:28vh}
+    .proposal-bg .p3{left:-12vw;bottom:7vh;width:44vw;height:29vh}
+    .proposal-bg .p4{right:-12vw;bottom:6vh;width:43vw;height:28vh}
+    .proposal-bg .p5{left:3vw;top:-10vh;width:32vw;height:23vh;opacity:.55}
+    .proposal-bg .p6{right:2vw;bottom:-12vh;width:34vw;height:24vh;opacity:.55}
+
+    .proposal-card{position:absolute;z-index:10;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:min(84vw,560px);min-height:320px;padding:42px 24px 34px;border-radius:38px;
+      background:rgba(255,250,252,.94);box-shadow:0 24px 70px rgba(85,0,30,.28);
+      display:flex;flex-direction:column;align-items:center;text-align:center}
+    .proposal-card h1{margin:0 0 14px;font-size:clamp(2rem,8vw,3.5rem);color:#9d1e4e}
+    .proposal-card h2{margin:0;color:#701a3b;font-size:clamp(1.45rem,5.5vw,2.25rem);line-height:1.25}
+    .buttons{position:relative;width:100%;height:96px;margin-top:28px}
+    .choice{position:absolute;top:14px;width:124px;height:66px;border-radius:999px;font-size:1.25rem;font-weight:800;transition:left .28s ease,top .28s ease,transform .2s ease}
+    #yesBtn{left:calc(50% - 136px);background:#d81350;color:white;box-shadow:0 10px 24px rgba(216,19,80,.28)}
+    #noBtn{left:calc(50% + 12px);background:#25282f;color:white}
+    .hint{margin:8px 0 0;font-size:.86rem;color:#9d5870;min-height:18px}
+
+    /* final screen */
+    #loveScreen{z-index:2;opacity:0;pointer-events:none;transform:scale(1.04);
+      background:linear-gradient(150deg,#ff0b49 0%,#ff2b68 48%,#ef0750 100%)}
+    #loveScreen.active{opacity:1;pointer-events:auto;transform:scale(1)}
+    .final-photos{position:absolute;inset:0;z-index:1}
+    .final-photos .fp{width:28vw;height:22vh;min-width:110px;min-height:150px;border-radius:28px;opacity:.96}
+    .fp1{left:4vw;top:16vh}.fp2{left:29vw;top:1vh}.fp3{right:-7vw;top:18vh}
+    .fp4{left:-7vw;top:42vh}.fp5{right:-7vw;top:47vh}.fp6{left:3vw;bottom:-5vh}
+    .fp7{left:30vw;bottom:-9vh}.fp8{right:2vw;bottom:-7vh}.fp9{right:3vw;top:2vh}
+    .fp1,.fp5,.fp8{z-index:3}.fp2,.fp3,.fp4,.fp6,.fp7,.fp9{z-index:1;opacity:.55}
+    .love-card{position:absolute;z-index:10;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:min(84vw,620px);padding:30px 18px 30px;border-radius:42px;background:var(--card);
+      box-shadow:0 28px 80px rgba(82,0,29,.30);text-align:center}
+    .love-card h1{margin:4px auto 24px;color:#c32657;font-size:clamp(2rem,8vw,3.4rem);line-height:1.12}
+    .main-photo{width:min(49vw,310px);height:min(42vh,430px);min-height:280px;margin:0 auto 24px;border-radius:28px;overflow:hidden;box-shadow:0 12px 30px rgba(80,0,30,.18)}
+    .main-photo img{width:100%;height:100%;object-fit:cover}
+    .message{margin:0 auto;color:#633146;font-size:clamp(1.05rem,4.6vw,1.45rem);line-height:1.5;font-weight:700;max-width:540px}
+    .love-card::after{content:"";position:absolute;inset:0;border-radius:42px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);pointer-events:none}
+
+    .hidden{opacity:0!important;pointer-events:none!important;transform:scale(.96)!important}
+    .exit{opacity:0!important;transform:scale(.96)!important;pointer-events:none!important}
+
+    @media (min-width:700px){
+      .proposal-bg .p1,.proposal-bg .p2,.proposal-bg .p3,.proposal-bg .p4{width:28vw}
+      .final-photos .fp{width:19vw;height:24vh}
+      .love-card{padding:36px}
+      .main-photo{width:280px;height:350px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="page">
+    <audio id="bgSong" loop preload="auto">
+      <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="proposalScreen">
+      <div class="proposal-bg">
+        <div class="float-photo p1 drift-a"><img src="cartoon-1.jpg" alt=""></div>
+        <div class="float-photo p2 drift-b"><img src="cartoon-2.jpg" alt=""></div>
+        <div class="float-photo p3 drift-c"><img src="cartoon-3.jpg" alt=""></div>
+      </div>
+
+      <div class="proposal-card">
+        <h1>For Bhumika 💖</h1>
+        <h2>Will you be my girlfriend? 🌹</h2>
+        <div class="buttons" id="buttonArea">
+          <button class="choice" id="yesBtn">Yes ❤️</button>
+          <button class="choice" id="noBtn">No</button>
+        </div>
+        <p class="hint" id="hint"></p>
+      </div>
+    </section>
+
+    <section id="loveScreen" aria-hidden="true">
+      <div class="final-photos">
+        <div class="float-photo fp fp1 drift-a"><img src="photo-1.jpg" alt=""></div>
+        <div class="float-photo fp fp2 drift-b"><img src="photo-2.jpg" alt=""></div>
+        <div class="float-photo fp fp3 drift-c"><img src="photo-3.jpg" alt=""></div>
+        <div class="float-photo fp fp4 drift-d"><img src="photo-4.png" alt=""></div>
+        <div class="float-photo fp fp5 drift-b"><img src="photo-5.jpg" alt=""></div>
+        <div class="float-photo fp fp6 drift-c"><img src="photo-6.jpg" alt=""></div>
+        <div class="float-photo fp fp7 drift-a"><img src="photo-7.jpg" alt=""></div>
+        <div class="float-photo fp fp8 drift-d"><img src="photo-8.jpg" alt=""></div>
+        <div class="float-photo fp fp9 drift-b"><img src="photo-9.jpg" alt=""></div>
+      </div>
+
+      <div class="love-card">
+        <h1>I love you so much<br>Bhumika ❤️</h1>
+        <div class="main-photo"><img src="photo-1.jpg" alt="Bhumika"></div>
+        <p class="message">
+          I can't express how happy I am right now.... thank you for saying yes to me....
+          now you are officially my girlfriend 😁❤️
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const song = document.getElementById('bgSong');
+    const page = document.getElementById('page');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const buttonArea = document.getElementById('buttonArea');
+    const hint = document.getElementById('hint');
+    const proposalScreen = document.getElementById('proposalScreen');
+    const loveScreen = document.getElementById('loveScreen');
+
+    let audioStarted = false;
+    let yesEscapes = 0;
+    let noAttempts = 0;
+    let canAcceptYes = false;
+    let movedByTouch = false;
+
+    // First touch/click ANYWHERE starts the song.
+    async function startSong() {
+      if (audioStarted) return;
+      audioStarted = true;
+      song.volume = 0.75;
+      try { await song.play(); } catch(e) { audioStarted = false; }
+    }
+    document.addEventListener('pointerdown', startSong, {once:false, passive:true});
+    document.addEventListener('keydown', startSong, {once:true});
+
+    function placeYesRandom() {
+      const area = buttonArea.getBoundingClientRect();
+      const bw = yesBtn.offsetWidth || 124;
+      const bh = yesBtn.offsetHeight || 66;
+      const maxX = Math.max(0, area.width - bw);
+      const maxY = Math.max(0, area.height - bh);
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      yesBtn.style.left = x + 'px';
+      yesBtn.style.top = y + 'px';
+      yesBtn.style.transform = `rotate(${(Math.random()*10-5).toFixed(1)}deg)`;
+    }
+
+    function escapeYes(e) {
+      if (canAcceptYes) return;
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      movedByTouch = true;
+      yesEscapes++;
+      placeYesRandom();
+      hint.textContent = yesEscapes < 5 ? 'Hehe... catch the Yes 😭❤️' : 'Okay okay... now you can catch it 😁❤️';
+      if (yesEscapes >= 5) canAcceptYes = true;
+    }
+
+    yesBtn.addEventListener('pointerdown', (e) => {
+      if (!canAcceptYes) escapeYes(e);
+    });
+    yesBtn.addEventListener('click', (e) => {
+      if (movedByTouch && !canAcceptYes) { movedByTouch = false; return; }
+      if (!canAcceptYes) { escapeYes(e); return; }
+      showLove();
+    });
+
+    function noAction(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      noAttempts++;
+
+      if (noAttempts === 1) {
+        const yesLeft = yesBtn.style.left || 'calc(50% - 136px)';
+        const yesTop = yesBtn.style.top || '14px';
+        const noLeft = noBtn.style.left || 'calc(50% + 12px)';
+        const noTop = noBtn.style.top || '14px';
+        yesBtn.style.left = noLeft;
+        yesBtn.style.top = noTop;
+        noBtn.style.left = yesLeft;
+        noBtn.style.top = yesTop;
+        hint.textContent = 'Nice try 😭 Try again...';
+      } else {
+        noBtn.classList.add('hidden');
+        yesBtn.style.left = 'calc(50% - 62px)';
+        yesBtn.style.top = '14px';
+        yesBtn.style.transform = 'rotate(0deg)';
+        canAcceptYes = true;
+        hint.textContent = 'Only one option left now 😁❤️';
+      }
+    }
+    noBtn.addEventListener('pointerdown', noAction);
+    noBtn.addEventListener('click', e => e.preventDefault());
+
+    function showLove() {
+      proposalScreen.classList.add('exit');
+      setTimeout(() => {
+        proposalScreen.style.display = 'none';
+        loveScreen.classList.add('active');
+        loveScreen.setAttribute('aria-hidden','false');
+      }, 500);
+    }
+  </script>
+</body>
+</html>
